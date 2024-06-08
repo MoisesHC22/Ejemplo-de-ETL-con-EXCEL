@@ -1,0 +1,776 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/7/2024 4:35:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MOISESHC"
+  DTS:CreatorName="MOISESHC\moyhc"
+  DTS:DTSID="{D03BD7D3-927F-4649-9EF5-76A6D5E7840F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{1F3A3FCF-352F-4B25-8F33-2076F0D96A74}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{286FAD93-4A32-48E6-B3C8-61B319C19B5A}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=A:\Excel\dataset.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{8A9D2812-B59A-4B4C-97A2-1A6EFAA976E6}"
+      DTS:ObjectName="Administrador de conexiones con Excel 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=A:\Excel\dataset.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Ingresa autos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EC0B90A5-5C40-4436-89A6-3D73165B7BFD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ingresa autos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Ingresa autos\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">dsautos</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ingresa autos\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomCli]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[nomCli]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomCli]"
+                      name="nomCli"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[edad]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[edad]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[edad]"
+                      name="edad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[dirCli]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[dirCli]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[dirCli]"
+                      name="dirCli"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomAge]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[nomAge]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomAge]"
+                      name="nomAge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[dirAge]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[dirAge]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[dirAge]"
+                      name="dirAge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[sueldo]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[sueldo]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[sueldo]"
+                      name="sueldo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[turno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[turno]"
+                      length="255"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[turno]"
+                      name="turno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[noagencia]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[noagencia]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[noagencia]"
+                      name="noagencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[ubicacion]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[ubicacion]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[ubicacion]"
+                      name="ubicacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomotor]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[nomotor]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomotor]"
+                      name="nomotor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[marca]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[marca]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[marca]"
+                      name="marca"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[modelo]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[modelo]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[modelo]"
+                      name="modelo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[anio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[anio]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[anio]"
+                      name="anio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[motor]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[motor]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[motor]"
+                      name="motor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[precio]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[precio]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[precio]"
+                      name="precio"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[nomCli]"
+                      dataType="nText"
+                      name="nomCli" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[edad]"
+                      dataType="r8"
+                      name="edad" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[dirCli]"
+                      dataType="nText"
+                      name="dirCli" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[nomAge]"
+                      dataType="nText"
+                      name="nomAge" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[dirAge]"
+                      dataType="nText"
+                      name="dirAge" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[sueldo]"
+                      dataType="cy"
+                      name="sueldo" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[turno]"
+                      dataType="wstr"
+                      length="255"
+                      name="turno" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[noagencia]"
+                      dataType="r8"
+                      name="noagencia" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[ubicacion]"
+                      dataType="nText"
+                      name="ubicacion" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[nomotor]"
+                      dataType="r8"
+                      name="nomotor" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[marca]"
+                      dataType="nText"
+                      name="marca" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[modelo]"
+                      dataType="nText"
+                      name="modelo" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[anio]"
+                      dataType="r8"
+                      name="anio" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[motor]"
+                      dataType="nText"
+                      name="motor" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].ExternalColumns[precio]"
+                      dataType="cy"
+                      name="precio" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[nomCli]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[nomCli]"
+                      name="nomCli" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[edad]"
+                      dataType="r8"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[edad]"
+                      name="edad" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[dirCli]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[dirCli]"
+                      name="dirCli" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[nomAge]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[nomAge]"
+                      name="nomAge" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[dirAge]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[dirAge]"
+                      name="dirAge" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[sueldo]"
+                      dataType="cy"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[sueldo]"
+                      name="sueldo" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[turno]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[turno]"
+                      name="turno" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[noagencia]"
+                      dataType="r8"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[noagencia]"
+                      name="noagencia" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[ubicacion]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[ubicacion]"
+                      name="ubicacion" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[nomotor]"
+                      dataType="r8"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[nomotor]"
+                      name="nomotor" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[marca]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[marca]"
+                      name="marca" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[modelo]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[modelo]"
+                      name="modelo" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[anio]"
+                      dataType="r8"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[anio]"
+                      name="anio" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[motor]"
+                      dataType="nText"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[motor]"
+                      name="motor" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[precio]"
+                      dataType="cy"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[precio]"
+                      name="precio" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ingresa autos\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dato]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ingresa autos\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{C024DD38-7F6D-4C2A-9FA7-C1568BD8CC2B}:invalid"
+                  connectionManagerRefId="{C024DD38-7F6D-4C2A-9FA7-C1568BD8CC2B}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nomCli]"
+                      cachedDataType="nText"
+                      cachedName="nomCli"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomCli]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomCli]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[edad]"
+                      cachedDataType="r8"
+                      cachedName="edad"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[edad]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[edad]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[dirCli]"
+                      cachedDataType="nText"
+                      cachedName="dirCli"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dirCli]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[dirCli]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nomAge]"
+                      cachedDataType="nText"
+                      cachedName="nomAge"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomAge]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomAge]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[dirAge]"
+                      cachedDataType="nText"
+                      cachedName="dirAge"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dirAge]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[dirAge]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sueldo]"
+                      cachedDataType="cy"
+                      cachedName="sueldo"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sueldo]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[sueldo]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[turno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="turno"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[turno]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[turno]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[noagencia]"
+                      cachedDataType="r8"
+                      cachedName="noagencia"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[noagencia]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[noagencia]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ubicacion]"
+                      cachedDataType="nText"
+                      cachedName="ubicacion"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ubicacion]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[ubicacion]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nomotor]"
+                      cachedDataType="r8"
+                      cachedName="nomotor"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomotor]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[nomotor]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[marca]"
+                      cachedDataType="nText"
+                      cachedName="marca"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[marca]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[marca]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[modelo]"
+                      cachedDataType="nText"
+                      cachedName="modelo"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modelo]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[modelo]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[anio]"
+                      cachedDataType="r8"
+                      cachedName="anio"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[anio]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[anio]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[motor]"
+                      cachedDataType="nText"
+                      cachedName="motor"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[motor]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[motor]" />
+                    <inputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[precio]"
+                      cachedDataType="cy"
+                      cachedName="precio"
+                      externalMetadataColumnId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[precio]"
+                      lineageId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output].Columns[precio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomCli]"
+                      dataType="nText"
+                      name="nomCli" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[edad]"
+                      dataType="r8"
+                      name="edad" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dirCli]"
+                      dataType="nText"
+                      name="dirCli" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomAge]"
+                      dataType="nText"
+                      name="nomAge" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dirAge]"
+                      dataType="nText"
+                      name="dirAge" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sueldo]"
+                      dataType="cy"
+                      name="sueldo" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[turno]"
+                      dataType="wstr"
+                      length="255"
+                      name="turno" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[noagencia]"
+                      dataType="r8"
+                      name="noagencia" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ubicacion]"
+                      dataType="nText"
+                      name="ubicacion" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomotor]"
+                      dataType="r8"
+                      name="nomotor" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[marca]"
+                      dataType="nText"
+                      name="marca" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modelo]"
+                      dataType="nText"
+                      name="modelo" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[anio]"
+                      dataType="r8"
+                      name="anio" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[motor]"
+                      dataType="nText"
+                      name="motor" />
+                    <externalMetadataColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[precio]"
+                      dataType="cy"
+                      name="precio" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ingresa autos\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ingresa autos\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ingresa autos\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ingresa autos\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Ingresa autos.Paths[Excel Source Output]"
+              endId="Package\Ingresa autos\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Ingresa autos\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Ingresa autos"
+          TopLeft="211.333333333333,84" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Ingresa autos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Ingresa autos\OLE DB Destination"
+          TopLeft="450,279" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Ingresa autos\Excel Source"
+          TopLeft="363,154" />
+        <EdgeLayout
+          Id="Package\Ingresa autos.Paths[Excel Source Output]"
+          TopLeft="435,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.5,83"
+              Start="0,0"
+              End="103.5,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.5"
+                    Point2="0,41.5"
+                    Point3="4,41.5" />
+                  <mssgle:LineSegment
+                    End="99.5,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.5,41.5"
+                    Point2="103.5,41.5"
+                    Point3="103.5,45.5" />
+                  <mssgle:LineSegment
+                    End="103.5,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ingresa autos\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ingresa autos\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
